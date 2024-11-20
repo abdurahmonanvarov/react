@@ -1,29 +1,55 @@
 import './App.css';
-import { useState } from 'react';
+import { Children, useState } from 'react';
+import Title from './component/title';
+import Modal from './component/Modal';
+import Eavent from './component/Eavent';
+import Regst from './component/Regst';
 
 function App() {
-  const [name, changeName] = useState('Gulzira')
+  const [name, changeName] = useState('Otabek')
+  const [show, showContent] = useState(true)
+  const [showModal, setShowModalClose] = useState(false)
   const [event, setEvents] = useState([
-    {title: "Solo va Gulzira", id: 1},
-    {title: "Solo va Anora", id: 2},
-    {title: "Solo va Mubins", id: 3},
+    { title: "Solo va solo4", id: 1 },
+    { title: "Solo va soplo3", id: 2 },
+    { title: "Solo va solo2", id: 3 },
   ])
 
   const button = () => {
-    changeName('Anora')
-    
-  } 
+    changeName('Abdurahmon')
+
+  }
+  const closeModal = () =>{
+    setShowModalClose(false)
+  }
+
+  const deletButton = (id) => {
+    setEvents((hodsa) => {
+      {
+        return hodsa.filter((event) => {
+          return event.id !== id
+        })
+      }
+    })
+  }
   return (
     <div className="App">
-        <h1>My love : {name}</h1>
-        <button onClick={button}>Change name</button>
-        {event.map((event) => {
-          return (
-            <div key={event.id}>
-              <h1>{event.title}</h1>
-            </div>
-          )
-        })}
+      <Title title="solo offical mana sanga olam olam gul" subtitle="React amalyot" />
+      <h1>My Name : {name}</h1>
+      {name && <button onClick={button}>Change name</button>}
+      {!name && <button onClick={() => {name("Otabek")}}></button>}
+      <br />
+      <br />
+      <br />
+      {show && <button onClick={() => showContent(false)}>HIdden content</button>}
+      {!show && <button onClick={() => showContent(true)}>Show content</button>}
+      {show && <Eavent event={event} deletButton={deletButton}/>}
+        { showModal &&
+          <Modal closeModal={closeModal}>
+          <Regst/>
+        </Modal>
+        }
+       {!showModal && <button onClick={() => setShowModalClose(true)}>New event</button> }
     </div>
   );
 }

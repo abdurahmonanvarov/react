@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.salom label,
+.salom input{
+    display: block;
+    text-align: center;
+    width: 50%;
+    margin: 10px auto;
+    padding: 10px;
+    font-size: 1.2rem;
+}
+button{
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 10px;
+}

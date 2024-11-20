@@ -1,0 +1,13 @@
+.solo{
+    font-size: 40px;
+    color: blue;
+    border-radius: 1px solid grey;
+    padding: 20px;
+    background-color: aqua;
+    width: 400px;
+   margin-left: 38%;
+}
+.buttons{
+    margin-bottom: 50px;
+    margin-left: 45%;
+}
